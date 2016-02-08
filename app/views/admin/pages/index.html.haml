@@ -1,13 +1,11 @@
 %h1 Listing pages
 
-%table
+%table.table
   %thead
     %tr
       %th Title
       %th Body
       %th Slug
-      %th
-      %th
       %th
 
   %tbody
@@ -15,11 +13,12 @@
       %tr
         %td= page.title
         %td= page.body
-        %td= url_for_page(page)
+        %td
+          %code= url_for_page(page)
         %td= link_to 'Show', admin_page_path(page)
         %td= link_to 'Edit', edit_admin_page_path(page)
         %td= link_to 'Destroy', admin_page_path(page), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Page', new_admin_page_path
+= link_to 'New Page', new_admin_page_path, class: "btn btn-primary"
