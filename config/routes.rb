@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-
     resources :pages #/admin/pages
-
   end
 
   # Retrieve slugs of pages and make them navigable routes
   # Checking all pages that don't have a slug
   # of those pages will not be counted
   # loop through all of those and create a new route
-  Page.where.not("slug", nil).all.each do |page|
+  Page.where("slug", nil).all.each do |page|
     get "/#{page.slug}", controller: "pages", action: "show", id: page.id
   end
   # The priority is based upon order of creation: first created -> highest priority.
