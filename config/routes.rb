@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :categories, only: [:show]
   resources :pages, only: [:show]
   namespace :admin do
     resources :pages #/admin/pages
+    resources :categories
   end
 
   # Retrieve slugs of pages and make them navigable routes
