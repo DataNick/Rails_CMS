@@ -11,7 +11,7 @@
     = f.text_field :title, class: "form-control"
   .field
     = f.label :body
-    = f.cktext_area :body, class: "form-control", rows: 15
+    = f.cktext_area :body, class: "ckeditor"
   .field
     = f.label :slug
     = f.text_field :slug, class: "form-control"
@@ -20,3 +20,6 @@
     = f.select :category_id, Category.all.map{|category| [category.name, category.id]}, class: "form-control"
   .actions
     = f.submit 'Save', class: "btn btn-primary"
+
+:javascript
+  CKEDITOR.replace('ckeditor')
