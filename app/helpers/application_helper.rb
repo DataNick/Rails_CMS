@@ -7,4 +7,5 @@ module ApplicationHelper
       "pages/#{page.id}"
     end
   end
+
 end
