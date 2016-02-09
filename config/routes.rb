@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :pages, only: [:show]
+  root 'admin/pages#index'
+
   namespace :admin do
     resources :pages #/admin/pages
     resources :categories
