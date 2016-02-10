@@ -12,7 +12,7 @@
     - @pages.each do |page|
       %tr
         %td= page.title
-        %td= page.body
+        %td= page.body.html_safe
         %td
           %code= url_for_page(page)
         %td= link_to 'Show', admin_page_path(page)
