@@ -7,11 +7,11 @@ module Admin
 
     def new
       @menu = Menu.new
+      10.times { @menu.menu_items.build } #instantiate a new menu_item object related to menu instance
     end
 
     def create
       @menu = Menu.new(menu_params)
-      10.times {@menu.menu_items.build} #instantiate a new menu_item object related to menu instance
       if @menu.save
         redirect_to admin_menus_path, notice: "Menu created"
       else
@@ -28,7 +28,7 @@ module Admin
     end
 
     def edit
-
+      10.times {@menu.menu_items.build} #instantiate a new menu_item object related to menu instance
     end
 
     def destroy
@@ -42,7 +42,7 @@ module Admin
     private
 
     def menu_params
-      params.require(:menu).permit(:name)
+      params.require(:menu).permit(:name, menu_items_attributes: [ :title, :url, :id ])
     end
 
     def set_menu
