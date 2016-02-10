@@ -2,5 +2,12 @@
   %p
     = f.text_field :name
 
+  %h3 Menu items
+  = f.fields_for :menu_items do |c|
+    %p
+      = c.text_field :title, placeholder: "Title"
+      = c.text_field :url, placeholder: "Url"
+      = c.hidden_field :id
+
   %p
-    = f.submit "Create Menu", class: "btn btn-primary"
+    = f.submit
