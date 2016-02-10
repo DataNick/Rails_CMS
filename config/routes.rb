@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  get 'menus/index'
-
-  get 'menus/new'
-
-  get 'menus/create'
-
-  get 'menus/update'
-
-  get 'menus/edit'
-
-  get 'menus/destroy'
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:show]
@@ -17,6 +6,7 @@ Rails.application.routes.draw do
   root 'admin/pages#index'
 
   namespace :admin do
+    resources :menus, except: [:show]
     resources :pages #/admin/pages
     resources :categories
   end
