@@ -11,6 +11,7 @@ module Admin
 
     def create
       @menu = Menu.new(menu_params)
+      10.times {@menu.menu_items.build} #instantiate a new menu_item object related to menu instance
       if @menu.save
         redirect_to admin_menus_path, notice: "Menu created"
       else
