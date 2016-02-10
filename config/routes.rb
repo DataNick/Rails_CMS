@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'types/index'
+
+  get 'types/new'
+
+  get 'types/edit'
+
+  get 'types/create'
+
+  get 'types/destroy'
+
+  get 'types/update'
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:show]
   resources :pages, only: [:show]
