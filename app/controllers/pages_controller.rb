@@ -9,7 +9,11 @@ class PagesController < ContentController
   protected
 
   def template_to_render
-    "page"
+    if template_exists?("page-#{@page.id}")
+      "page-#{@page.id}"
+    else
+      "page"
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
