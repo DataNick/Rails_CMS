@@ -34,7 +34,7 @@ module Admin
       end
     end
 
-    private
+    protected
 
     def type_params
       params.require(:type).permit(:name, field_definitions_attributes: [ :key, :id ])
