@@ -37,7 +37,7 @@ module Admin
     private
 
     def type_params
-      params.require(:type).permit(:name, field_definitions: [ :key, :id ])
+      params.require(:type).permit(:name, field_definitions_attributes: [ :key, :id ])
     end
 
     def find_type
