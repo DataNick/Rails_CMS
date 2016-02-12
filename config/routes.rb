@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root to: redirect(Setting.where(key: "homepage").first.value)
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:show]
   resources :pages, only: [:show]
-  root 'admin/pages#index'
+  # root 'admin/pages#index'
 
   namespace :admin do
     resources :menus, except: [:show]
