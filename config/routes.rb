@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'settings/index'
+  end
+
+  namespace :admin do
+  get 'settings/update'
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:show]
   resources :pages, only: [:show]
