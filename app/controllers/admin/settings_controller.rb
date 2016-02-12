@@ -1,6 +1,7 @@
 class Admin::SettingsController < ApplicationController
   def index
     @settings = Setting.all
+    @themes = get_themes
   end
 
   def update
@@ -16,4 +17,14 @@ class Admin::SettingsController < ApplicationController
   def setting_params
     params.require(:setting).permit(:homepage, :theme) #will have an array of settings with different keys
   end
+
+  def get_themes
+    themes_directory = File.join(Rails.root, "app/themes/")
+    theme_folders = Dir.entries(themes_directory).select do |item|
+      !%w(. ..).include?(item)
+    end.map do |folder|
+      OpenStruct.new((YAML.load_file File.join(themes_directory, folder, "info.yaml")).merge id: folder)
+    end
+  end
+
 end
