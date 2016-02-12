@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :types, except: [:show]
     resources :pages #/admin/pages
     resources :categories
-    resources :settings, only: [:index, :update]
+    get "settings" => "settings#index"
+    put "settings" => "settings#update"
   end
 
   # Retrieve slugs of pages and make them navigable routes
