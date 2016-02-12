@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-  get 'settings/index'
-  end
-
-  namespace :admin do
-  get 'settings/update'
-  end
-
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:show]
   resources :pages, only: [:show]
@@ -18,6 +10,7 @@ Rails.application.routes.draw do
     resources :types, except: [:show]
     resources :pages #/admin/pages
     resources :categories
+    resources :settings, only: [:index, :update]
   end
 
   # Retrieve slugs of pages and make them navigable routes
