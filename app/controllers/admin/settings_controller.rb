@@ -8,14 +8,14 @@ class Admin::SettingsController < ApplicationController
     setting_params.each do |key, value|
       Setting.where(key: key).first.update_attribute(:value, value)
     end
-    Rails.application.reload.routes!
+    Rails.application.reload_routes!
     redirect_to admin_settings_path, notice: "Settings saved."
   end
 
   private
 
   def setting_params
-    params.require(:setting).permit(:homepage, :theme) #will have an array of settings with different keys
+    params.require(:settings).permit(:homepage, :theme) #will have an array of settings with different keys
   end
 
   def get_themes
