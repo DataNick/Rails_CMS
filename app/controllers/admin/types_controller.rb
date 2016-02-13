@@ -1,5 +1,5 @@
 module Admin
-  class TypesController < ApplicationController
+  class TypesController < AdminController
     before_action :find_type, only: [ :edit, :update ]
     def index
       @types = Type.all
