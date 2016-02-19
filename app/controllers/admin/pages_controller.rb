@@ -1,7 +1,7 @@
 module Admin
   class PagesController < AdminController
     before_action :set_page, only: [:show, :edit, :update, :destroy]
-
+    DEFAULT_ID = Random.rand(20..30)
     # GET /pages
     # GET /pages.json
     def index
@@ -15,7 +15,8 @@ module Admin
 
     # GET /pages/new
     def new
-      @page = Page.new(type: Type.where(name: params[:type]).first)
+      @page = Page.new type: Type.where(name: params[:type]).first
+      # if @page.type_id == nil then @page.type_id = 1 end
       @page.type.field_definitions.each do |definition|
         @page.fields.build(field_definition: definition)
       end
